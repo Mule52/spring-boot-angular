@@ -1,0 +1,41 @@
+<div class="row" style="padding-top: 15px;">
+    <div class="col-xs-2"></div>
+    <div class="col-xs-8 center">
+        <p>
+            This page allows you to view, modify, and save an actor's details.
+        </p>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">{{heading}} <div style="display: inline;float: right;">ID: {{actor.actorId}}</div></h3>
+            </div>
+            <div class="panel-body">
+                <form role="form" class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">First Name</label>
+                        <div class="col-sm-9">
+                            <input type="text" placeholder="first name" class="form-control" ng-model="actor.firstName">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Last Name</label>
+                        <div class="col-sm-9">
+                            <input type="text" placeholder="last name" class="form-control" ng-model="actor.lastName">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label" placeholder="last updated">Last Updated</label>
+                        <div class="col-sm-9">
+                            <!--<label class="form-control">${actor.lastUpdatedString}</label>-->
+                            <input type="text" placeholder="last updated" class="form-control" ng-model="actor.lastUpdatedString" readonly>
+                        </div>
+                    </div>
+                    <div class="button-bar pull-right">
+                        <button class="btn btn-default" ng-click="save(actor)" disabled.bind="!isDirty">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-xs-2"></div>
+</div>

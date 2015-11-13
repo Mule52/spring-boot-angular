@@ -1,0 +1,52 @@
+<h1>Actors</h1>
+<p>This is a SPA, so use rest calls in the client controller to retrieve data from the server.</p>
+<div ng-show="authenticated">
+
+    <h2>{{heading}} <div style="font-size:initial;" class="pull-right"><a href="#/actors/0/detail">create new actor</a></div></h2>
+
+    <div class="container">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="actor in actors">
+                <td>{{actor.actorId}}</td>
+                <td>{{actor.firstName}}</td>
+                <td>{{actor.lastName}}</td>
+                <td>
+                    <a class="glyphicon glyphicon-remove pull-right" href="" ng-click="deleteActor(actor)"style="padding-left: 10px;"></a>
+                    <a class="glyphicon glyphicon-edit pull-right" ng-href="#/actors/{{actor.actorId}}/detail"></a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <nav>
+            <ul class="pagination pull-right">
+                <li ng-class="{disabled: currentPage==0}">
+                    <a href="" aria-label="Previous" ng-click="goToPage(page-1)">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li ng-repeat="page in totalPagesArray" ng-class="{active: page==currentPage}">
+                    <a href="" ng-click="goToPage(page)">{{page+1}}</a>
+                </li>
+                <li ng-class="{disabled: currentPage==totalPages-1}">
+                    <a href="" aria-label="Next" ng-click="goToPage(page+1)">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+
+</div>
+<div  ng-show="!authenticated">
+    <p>Login to see your greeting</p>
+</div>
