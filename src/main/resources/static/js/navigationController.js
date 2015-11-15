@@ -20,12 +20,15 @@ angular.module('demo')
                 }).success(function(data) {
                     if (data.name) {
                         $rootScope.authenticated = true;
+                        $rootScope.isAdmin = _.find(data.authorities, function(x){return x.authority == 'ROLE_ADMIN';}) ? true : false;
                     } else {
                         $rootScope.authenticated = false;
+                        $rootScope.isAdmin = false;
                     }
                     callback && callback($rootScope.authenticated);
                 }).error(function() {
                     $rootScope.authenticated = false;
+                    $rootScope.isAdmin = false;
                     callback && callback(false);
                 });
 
